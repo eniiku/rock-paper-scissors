@@ -33,15 +33,47 @@ header p {
 main {
     width: 30em;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     justify-items: center;
+    padding: 1em;
+    gap: 3em;
 }
 
-main .moves {
+main .player-moves {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3em;
+}
+
+.player-moves .moves {
     outline: 2px solid #000;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 6em;
-    min-width: 6em;
+    height: 6em;
+    width: 6em;
+}
+
+main .results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3em;
+}
+
+.results .scores {
+    outline: 2px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3em;
+    width: 3em
+}
+
+.user-score,
+.ui-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
 }
