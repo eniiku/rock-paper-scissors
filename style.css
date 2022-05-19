@@ -52,6 +52,7 @@ main .player-moves {
     justify-content: center;
     height: 6em;
     width: 6em;
+    cursor: pointer;
 }
 
 main .results {
