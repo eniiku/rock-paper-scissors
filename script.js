@@ -13,13 +13,15 @@ function computerPlay() {
 //plays a round of rock paper scissors
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == moves[0] && computerSelection == moves[1]) {
-        console.log("You Lose! Paper beats");
-    } else {
+        console.log("You Lose! Paper beats Rock");
+    } else if (playerSelection == moves[1] && computerSelection == moves[0]) {
+        console.log("You Win! Paper beats Rock")
+    } else{
         console.log("uh-oh. not looking good");
     }
-    return
 }
 
+//calculates wins and losses and displays scores
 function game() {
     let userWin = 0;
     let userLose = 0;
