@@ -34,23 +34,26 @@ function game() {
 
     for (let i = 0; i < 5; i++) {
         if (i < 5) {
-            const playerSelection = prompt("Round: " + (i + 1) + " Rock, Paper, Scissors. Whats your move?");
+            const playerSelection = prompt("Round: " + (i + 1) + " Rock, Paper, Scissors. Whats your move?").toLowerCase();
             const computerSelection = computerPlay();
             playRound(playerSelection, computerSelection);
-            if (playerSelection == moves[0] && computerSelection == moves[2]) {
+            if (playerSelection == moves[0] && computerSelection == moves[2] || 
+                playerSelection == moves[1] && computerSelection == moves[0] || 
+                playerSelection == moves[2] && computerSelection == moves[1]) {
                 userWin++;
-            } else if (playerSelection == moves[1] && computerSelection == moves[0]) {
-                userWin++;
-            } else if (playerSelection == moves[2] && computerSelection == moves[1]) {
-                userWin++;
-            } else if (playerSelection == moves[2] && computerSelection == moves[0]) {
+            } else if (playerSelection == moves[2] && computerSelection == moves[0] || 
+                playerSelection == moves[0] && computerSelection == moves[1] || 
+                playerSelection == moves[1] && computerSelection == moves[2]) {
                 userLose++;
-            } else if (playerSelection == moves[0] && computerSelection == moves[1]) {
-                userLose++;
-            } else if (playerSelection == moves[1] && computerSelection == moves[2]) {
-                userLose++;
-            } else {
+            } else if (playerSelection == moves[0] && computerSelection == moves[0] || 
+                playerSelection == moves[0] && computerSelection == moves[0] || 
+                playerSelection == moves[0] && computerSelection == moves[0]) {
                 alert("its a tie! play again")
+                i--;
+            } else if (playerSelection !== moves[0] || 
+                moves[1] || 
+                moves[2]) {
+                alert("Please enter valid input! (Rock, Paper, Scissors)");
                 i--;
             }
         }
