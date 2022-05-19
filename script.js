@@ -1,6 +1,4 @@
 const moves = ["rock", "paper", "scissors"];
-const playerSelection = prompt("Rock, Paper, Scissors. Whats your move?");
-const computerSelection = computerPlay();
 
 //gets random input of moves from computer
 function computerPlay() {
@@ -27,22 +25,26 @@ function game() {
     let userLose = 0;
 
     for (let i = 0; i < 5; i++) {
-        playRound(playerSelection, computerSelection);
-        if (playerSelection == moves[0] && computerSelection == moves[2]) {
-            userWin++;
-        } else if (playerSelection == moves[1] && computerSelection == moves[0]) {
-            userWin++;
-        } else if (playerSelection == moves[2] && computerSelection == moves[1]) {
-            userWin++;
-        } else if (playerSelection == moves[2] && computerSelection == moves[0]) {
-            userLose++;
-        } else if (playerSelection == moves[0] && computerSelection == moves[1]) {
-            userLose++;
-        } else if (playerSelection == moves[1] && computerSelection == moves[2]) {
-            userLose++;
-        } else {
-            userLose = userLose;
-            userWin = userWin;
+        if (i < 5) {
+            const playerSelection = prompt("Round: " + (i + 1) + " Rock, Paper, Scissors. Whats your move?");
+            const computerSelection = computerPlay();
+            playRound(playerSelection, computerSelection);
+            if (playerSelection == moves[0] && computerSelection == moves[2]) {
+                userWin++;
+            } else if (playerSelection == moves[1] && computerSelection == moves[0]) {
+                userWin++;
+            } else if (playerSelection == moves[2] && computerSelection == moves[1]) {
+                userWin++;
+            } else if (playerSelection == moves[2] && computerSelection == moves[0]) {
+                userLose++;
+            } else if (playerSelection == moves[0] && computerSelection == moves[1]) {
+                userLose++;
+            } else if (playerSelection == moves[1] && computerSelection == moves[2]) {
+                userLose++;
+            } else {
+                alert("its a tie! play again")
+                i--;
+            }
         }
     }
     
