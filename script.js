@@ -8,14 +8,22 @@ function computerPlay() {
     return result;
 }
 
-//plays a round of rock paper scissors
+//plays rounds of rock paper scissors
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection == moves[0] && computerSelection == moves[1]) {
-        console.log("You Lose! Paper beats Rock");
+    if (playerSelection == moves[0] && computerSelection == moves[2]) {
+        console.log("You Win! Rock beats Scissors")
     } else if (playerSelection == moves[1] && computerSelection == moves[0]) {
         console.log("You Win! Paper beats Rock")
-    } else{
-        console.log("uh-oh. not looking good");
+    } else if (playerSelection == moves[2] && computerSelection == moves[1]) {
+        console.log("You Win! Scissors beats Paper")
+    } else if (playerSelection == moves[1] && computerSelection == moves[2]) {
+        console.log("You Lose! Scissors beats Paper")
+    } else if (playerSelection == moves[0] && computerSelection == moves[1]) {
+        console.log("You Lose! Paper beats Rock")
+    } else if (playerSelection == moves[2] && computerSelection == moves[0]) {
+        console.log("You Lose! Rock beats Scissors")
+    }  else {
+        console.log("Its a tie!");
     }
 }
 
@@ -50,10 +58,8 @@ function game() {
     
     if (userWin > userLose) {
         console.log("You: " + userWin + " " + "Computer: " + userLose +"\nYou Win!!")
-    } else if (userLose > userWin) {
-        console.log("You: " + userWin + " " + "Computer: " + userLose +"\nOh no! You lost.")
     } else {
-        console.log("ummmmm? wtf do we have here????")
+        console.log("You: " + userWin + " " + "Computer: " + userLose +"\nOh no! You lost.")
     }
 }
 game();
