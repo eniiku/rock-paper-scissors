@@ -1,4 +1,6 @@
 const moves = ["rock", "paper", "scissors"];
+const playerSelection = moves[0];
+const computerSelection = computerPlay();
 
 //gets random input of moves from computer
 function computerPlay() {
@@ -27,42 +29,37 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-//calculates wins and losses and displays scores
+//collects functions to simulate game
 function game() {
+    for (let i = 0; i < 5; i++) {
+            playRound(playerSelection, computerSelection);
+            displayScores();
+    }
+}
+
+function displayScores() {
     let userWin = 0;
     let userLose = 0;
-
-    for (let i = 0; i < 5; i++) {
-        if (i < 5) {
-            const playerSelection = prompt("Round: " + (i + 1) + " Rock, Paper, Scissors. Whats your move?").toLowerCase();
-            const computerSelection = computerPlay();
-            playRound(playerSelection, computerSelection);
-            if (playerSelection == moves[0] && computerSelection == moves[2] || 
-                playerSelection == moves[1] && computerSelection == moves[0] || 
-                playerSelection == moves[2] && computerSelection == moves[1]) {
-                userWin++;
-            } else if (playerSelection == moves[2] && computerSelection == moves[0] || 
-                playerSelection == moves[0] && computerSelection == moves[1] || 
-                playerSelection == moves[1] && computerSelection == moves[2]) {
-                userLose++;
-            } else if (playerSelection == moves[0] && computerSelection == moves[0] || 
-                playerSelection == moves[0] && computerSelection == moves[0] || 
-                playerSelection == moves[0] && computerSelection == moves[0]) {
-                alert("its a tie! play again")
-                i--;
-            } else if (playerSelection !== moves[0] || 
-                moves[1] || 
-                moves[2]) {
-                alert("Please enter valid input! (Rock, Paper, Scissors)");
-                i--;
-            }
-        }
-    }
+    let userScore = document.querySelector('.user-win');
+    let uiScore = document.querySelector('.user-lose');
     
-    if (userWin > userLose) {
-        console.log("You: " + userWin + " " + "Computer: " + userLose +"\nYou Win!!")
-    } else {
-        console.log("You: " + userWin + " " + "Computer: " + userLose +"\nOh no! You lost.")
-    }
+    if (playerSelection == moves[0] && computerSelection == moves[2] || 
+        playerSelection == moves[1] && computerSelection == moves[0] || 
+        playerSelection == moves[2] && computerSelection == moves[1]) {
+            userWin++;
+        } else if (playerSelection == moves[2] && computerSelection == moves[0] || 
+            playerSelection == moves[0] && computerSelection == moves[1] || 
+            playerSelection == moves[1] && computerSelection == moves[2]) {
+                userLose++;
+            }
+            
+            userScore.textContent = userWin;
+            uiScore.textContent = userLose;
+            
+        if (userWin > userLose) {
+            console.log("You: " + userWin + " " + "Computer: " + userLose +"\nYou Win!!")
+        } else {
+            console.log("You: " + userWin + " " + "Computer: " + userLose +"\nOh no! You lost.")
+        }
 }
 game();
