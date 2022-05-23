@@ -1,5 +1,5 @@
 const moves = ["rock", "paper", "scissors"];
-const playerSelection = moves[0];
+let playerSelection;
 const computerSelection = computerPlay();
 
 //gets random input of moves from computer
@@ -31,12 +31,15 @@ function playRound(playerSelection, computerSelection) {
 
 //collects functions to simulate game
 function game() {
-    for (let i = 0; i < 5; i++) {
-            playRound(playerSelection, computerSelection);
+            if (playerSelection == moves[0] && computerSelection == moves[0] || 
+                playerSelection == moves[0] && computerSelection == moves[0] || 
+                playerSelection == moves[0] && computerSelection == moves[0]) {
+                    alert("its a tie")
+                }
             displayScores();
-    }
 }
 
+//displays scores and result of game
 function displayScores() {
     let userWin = 0;
     let userLose = 0;
@@ -53,13 +56,30 @@ function displayScores() {
                 userLose++;
             }
             
-            userScore.textContent = userWin;
-            uiScore.textContent = userLose;
+    userScore.textContent = userWin;
+    uiScore.textContent = userLose;
             
-        if (userWin > userLose) {
-            console.log("You: " + userWin + " " + "Computer: " + userLose +"\nYou Win!!")
-        } else {
-            console.log("You: " + userWin + " " + "Computer: " + userLose +"\nOh no! You lost.")
-        }
+    if (userWin > userLose) {
+        console.log("You: " + userWin + " " + "Computer: " + userLose +"\nYou Win!!")
+    } else {
+        console.log("You: " + userWin + " " + "Computer: " + userLose +"\nOh no! You lost.")
+    }
 }
-game();
+
+
+// plays game based on user input 
+document.querySelector('#player-moves').addEventListener
+('click', function(e) {
+    const play = e.target.getAttribute('id');
+
+    if (play == (moves[0])) {
+        playerSelection = moves[0];
+        game();
+    } else if (play == (moves[1])) {
+        playerSelection = moves[1];
+        game();
+    } else {
+        playerSelection = moves[2];
+        game();
+    }
+});
